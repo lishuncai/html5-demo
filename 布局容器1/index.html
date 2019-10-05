@@ -1,0 +1,53 @@
+<html lang="cn-ZH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimun-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo1</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="mask"></div>
+  <nav id="nav">
+    <div>
+      <div class="btn-hamburger">
+        <div class="line"></div>
+      </div>
+    </div>
+  </nav>
+  <div id="container">
+    <aside id="aside">
+      <div>
+        <p>
+          this is aside！
+        </p>
+        <div class="content"></div>
+    </div>
+    </aside>
+    <main id="main">
+      <div class="content-wrapper">
+        <h1>hello world</h1>
+        <br>
+        <p>this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!this is a article!</p>
+        <div class="footer">
+            this is end!
+          </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let hamburger = document.querySelector('.btn-hamburger');
+    let maskNode = document.querySelector('body .mask');
+    hamburger.onclick = toggleAside.bind(null, true);
+    maskNode.onclick = toggleAside.bind(null, false);
+    function toggleAside (flag) {
+      var prop = flag?"add":"remove";
+      var asideNode = document.querySelector('#aside');
+      asideNode.classList[prop]('isactive');
+      maskNode.classList[prop]('isactive');
+      // hamburger.classList[prop]('isactive');
+    }
+  </script>
+</body>
+</html>
