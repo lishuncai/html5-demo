@@ -1,0 +1,59 @@
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      background: #aaa;
+    }
+    /*汉堡菜单按钮*/
+    .btn-hamburger{
+      display: flex;
+      width: 30px;
+      height: 30px;
+    }
+    .btn-hamburger .line {
+      width: 100%;
+      height: 2px; /*决定横线的粗细*/ 
+      margin: auto;
+      position: relative;
+      display: block;
+      background-color: #fff;
+      transition: all .5s;
+    }
+    .btn-hamburger:hover .line {
+      background: none;
+    }
+    .btn-hamburger .line:before,  .btn-hamburger .line:after{
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      transition: all .5s;
+    }
+    .btn-hamburger .line:before {
+      transform: translateY(10px);
+    } 
+    .btn-hamburger .line:after {
+      transform: translateY(-10px);
+    } 
+    .btn-hamburger:hover .line:before{
+      transform: translateY(0) rotate(-45deg);
+    }
+    .btn-hamburger:hover .line:after{
+      transform: translateY(0px) rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="btn-hamburger">
+    <div class="line"></div>
+  </div>
+</body>
+</html>
