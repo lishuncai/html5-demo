@@ -1,0 +1,127 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .treemap-node {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      margin-left: -1px;
+    }
+    .child-grounp {
+      position: relative;
+    }
+    .treemap-node>.content {
+      border: 1px solid #333;
+      padding: 5px;
+      margin: 10px 0;
+    }
+    .treemap-node>.content a {
+      width: 100%;
+      height: 100%;
+      
+      cursor: pointer;
+    }
+    .treemap-node>.line-vertical {
+      /* height: 100px; */
+      width: 1px;
+      background-color: #333;
+    }
+    .treemap-node>.child-grounp {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+    }
+
+    .treemap-line-left,
+    .treemap-line-right {
+      width: 15px;
+      height: 1px;
+      background-color: #333;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div id="tree-wrapper" style="position: relative;" class="treemap-node treemap-node-root">
+    <div class="treemap-node">
+      <div class="content">
+        <a> 太阳系 </a>
+      </div>
+      <div class="treemap-line-right"></div>
+      <div class="line-vertical"></div>
+      <div class="child-grounp">
+        <div class="treemap-node">
+          <div class="treemap-line-left"></div>
+          <div class="content">
+            <a href="#"> 太阳1 </a>
+          </div>
+          <div class="treemap-line-right"></div>
+          <div class="line-vertical"></div>
+          <div class="child-grounp">
+            <div class="treemap-node">
+              <div class="treemap-line-left"></div>
+              <div class="content">
+                <a href="#"> 地球1 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="treemap-node">
+          <div class="treemap-line-left"></div>
+          <div class="content">
+            <a href="#"> 太阳2 </a>
+          </div>
+          <div class="treemap-line-right"></div>
+          <div class="line-vertical"></div>
+          <div class="child-grounp">
+            <div class="treemap-node">
+              <div class="treemap-line-left"></div>
+              <div class="content">
+                <a href="#"> 地球2 </a>
+              </div>
+            </div>
+            <div class="treemap-node">
+              <div class="treemap-line-left"></div>
+              <div class="content">
+                <a href="#"> 地球3 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="treemap-node">
+          <div class="treemap-line-left"></div>
+          <div class="content">
+            <a href="#"> 太阳3 </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    NodeList.prototype.forEach = Array.prototype.forEach; // 解决ie浏览器nodeList 不支持forEach
+    var treeWrapper = document.querySelector('#tree-wrapper')
+    var timeList = treeWrapper.querySelectorAll('.line-vertical')
+    timeList.forEach(function (el) {
+      var treemapNodeChildren = el.nextElementSibling
+      var children = treemapNodeChildren.children
+      if (children.length > 1) {
+        var firstChild = children[0]
+        var lastChild = children[children.length - 1]
+        var top = firstChild.offsetTop + firstChild.offsetHeight / 2
+        var height =  lastChild.offsetTop  - top + lastChild.offsetHeight / 2 -1
+        el.style.top = top + 'px'
+        el.style.height = height + 'px'
+      } else {
+        el.style.height = 0
+      }
+    })
+  </script>
+</body>
+
+</html>
