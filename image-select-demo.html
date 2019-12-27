@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id='example'>
+	<div class="item-wrapper" v-for="(item, index) in dataList" :key="index" style="position: relative;">
+  	<input type="checkbox" :id="item.value" :value="item.value" v-model="checkedNames"  style="position: absolute;">
+		<label :for="item.value">
+			<img style="width: 100px" src="http://img1.imgtn.bdimg.com/it/u=2546612145,2936515136&fm=26&gp=0.jpg">
+		</label>
+	</div>
+  <span>Checked names: {{ checkedNames }}</span>
+
+  <div class="control">
+  	 <button @click="reset">重置</button>
+  	<button @click="checkAll">全选</button>
+  </div>
+</div>
+<script type="text/javascript">
+	const dataList = [
+		{ value: 1, label: 'pic-1' },
+	  { value: 2, label: 'pic-2' },
+	  { value: 3, label: 'pic-3' }
+	]
+	new Vue({
+	  el: '#example',
+	  data: {
+	    checkedNames: [],
+	    dataList: dataList
+	  },
+	  methods: {
+	  	reset() {
+	  		this.checkedNames = [];
+	  	},
+	  	checkAll() {
+	  		this.checkedNames = this.dataList.map(item => item.value)
+	  	}
+	  }
+	})
+</script>
+</body>
+</html>
